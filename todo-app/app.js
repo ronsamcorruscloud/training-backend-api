@@ -3,9 +3,13 @@ const fs = require('fs').promises;
 const path = require('path');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const cors = require('cors');
 const app = express();
 
 const dataFile = path.join(__dirname, 'todos.json');
+
+// Enable CORS for all origins
+app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
