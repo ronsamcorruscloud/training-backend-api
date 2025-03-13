@@ -8,8 +8,13 @@ const app = express();
 
 const dataFile = path.join(__dirname, 'todos.json');
 
-// Enable CORS for all origins
-app.use(cors());
+// Enable CORS with specific options
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
